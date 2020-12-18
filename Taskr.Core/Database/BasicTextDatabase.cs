@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using System.Text;
+using Taskr.Core.Utilities;
 
 namespace Taskr.Core.Database
 {
@@ -14,8 +14,7 @@ namespace Taskr.Core.Database
 
         public void AddRecord<T>(T record) where T : IRecord, new()
         {
-            if (!typeof(T).IsSerializable && !(typeof(ISerializable).IsAssignableFrom(typeof(T))))
-                throw new InvalidOperationException("Database Records must be Serializable.");
+            _ = ObjectUtilities.IsSerializable(record);
         }
     }
 }
