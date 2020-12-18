@@ -30,8 +30,20 @@
                 <ColumnDefinition Width="{Binding ElementName=Window, Path=(ui:TitleBar.SystemOverlayLeftInset), Converter={StaticResource PixelsToGridLength}}" />
 			</Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Grid.ColumnSpan="5" FontSize="13" HorizontalAlignment="Center"
+            <TextBlock Grid.Column="2" FontSize="13" HorizontalAlignment="Center"
                     VerticalAlignment="Center" Text="{Binding ElementName=Window, Path=Title}" />
         </Grid>
-	</Grid>
+        
+        <TabControl x:Name="tabControl" Grid.Row="1">
+            <TabItem Header="Home">
+                <Grid Background="#FFE5E5E5">
+                    <ui:ScrollViewerEx x:Name="TaskList">
+                    </ui:ScrollViewerEx>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Graph">
+                <Grid Background="#FFE5E5E5"></Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>
