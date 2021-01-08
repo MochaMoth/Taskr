@@ -7,12 +7,10 @@ namespace Taskr.Core.Utilities
 {
     class ObjectUtilities
     {
-        public static bool IsSerializable<T>(T obj)
+        public static void EnsureObjectIsSerializable<T>()
         {
-            if (!typeof(T).IsSerializable && !(typeof(ISerializable).IsAssignableFrom(typeof(T))))
+            if (!typeof(T).IsSerializable && !typeof(ISerializable).IsAssignableFrom(typeof(T)))
                 throw new InvalidOperationException("Database Records must be Serializable.");
-
-            return true;
         }
     }
 }
