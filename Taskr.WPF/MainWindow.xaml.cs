@@ -8,6 +8,7 @@ namespace Taskr.WPF
     {
         public MainWindow()
         {
+            Logger.SetLogger(new BasicConsoleLogger());
             InitializeComponent();
             Loaded += InitializeWindow;
         }

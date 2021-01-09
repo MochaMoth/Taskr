@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Taskr.Core.Logging
 {
-    interface ILogger
+    public interface ILogger
     {
         void Log(string message);
     }
