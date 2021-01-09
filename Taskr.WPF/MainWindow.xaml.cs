@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
+using Taskr.Core.Logging;
 
 namespace Taskr.WPF
 {
@@ -12,7 +14,7 @@ namespace Taskr.WPF
 
         public void InitializeWindow(object sender, RoutedEventArgs e)
         {
-            //
+            Logger.Log("Hello");
         }
     }
 }
