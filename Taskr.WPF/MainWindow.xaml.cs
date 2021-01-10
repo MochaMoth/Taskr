@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using Taskr.Core.Logging;
 
 namespace Taskr.WPF
@@ -8,7 +7,7 @@ namespace Taskr.WPF
     {
         public MainWindow()
         {
-            Logger.SetLogger(new BasicConsoleLogger());
+            Logger.SetLogger(new BasicConsoleLogger(LogLevel.Error));
             InitializeComponent();
             Loaded += InitializeWindow;
         }
