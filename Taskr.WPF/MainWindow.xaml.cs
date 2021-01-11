@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Taskr.Core.Logging;
+using Taskr.WPF.LoggerWindow;
 
 namespace Taskr.WPF
 {
@@ -7,14 +8,19 @@ namespace Taskr.WPF
     {
         public MainWindow()
         {
+            LogWindow logWindow = new LogWindow();
+            logWindow.Show();
             Logger.AddLogger(new BasicConsoleLogger(LogLevel.Error));
             InitializeComponent();
             Loaded += InitializeWindow;
         }
-
+        
         public void InitializeWindow(object sender, RoutedEventArgs e)
         {
             Logger.Log("Hello");
+            Logger.LogInfo("Here's some info.");
+            Logger.LogWarning("Something non-critical happened.");
+            Logger.LogError("Some exception happened, but we stopped the execution.");
         }
     }
 }
