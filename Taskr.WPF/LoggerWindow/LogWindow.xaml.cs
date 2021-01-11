@@ -9,17 +9,35 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Taskr.Core.Logging;
 
 namespace Taskr.WPF.LoggerWindow
 {
-    /// <summary>
-    /// Interaction logic for LogWindow.xaml
-    /// </summary>
-    public partial class LogWindow : Window
+    public partial class LogWindow : Window, ILogger
     {
         public LogWindow()
         {
             InitializeComponent();
+        }
+
+        public void Log(string message)
+        {
+            //
+        }
+
+        public void LogInfo(string message)
+        {
+            //
+        }
+
+        public void LogWarning(string message)
+        {
+            //
+        }
+
+        public void LogError(string message)
+        {
+            //
         }
     }
 }
