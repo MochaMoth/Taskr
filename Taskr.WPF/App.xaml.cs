@@ -8,8 +8,8 @@ using System.Windows;
 
 namespace Taskr.WPF
 {
-    public partial class App : Application
-    {
-        //
-    }
+	public partial class App : Application
+	{
+		//
+	}
 }

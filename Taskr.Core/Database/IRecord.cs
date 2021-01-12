@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Taskr.Core.Database
 {
-    public interface IRecord
-    {
-    }
+	public interface IRecord
+	{
+	}
 }

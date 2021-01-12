@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Taskr.Core.Logging
 {
-    public interface ILogger
-    {
-        void Log(string message);
-        void LogInfo(string message);
-        void LogWarning(string message);
-        void LogError(string message);
-    }
+	public interface ILogger
+	{
+		void LogInfo(string message);
+		void LogWarning(string message);
+		void LogError(string message);
+		void Log(string message);
+	}
 }
