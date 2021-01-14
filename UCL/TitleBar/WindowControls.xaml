@@ -6,59 +6,6 @@
 			 xmlns:local="clr-namespace:UCL.TitleBar"
 			 mc:Ignorable="d" 
 			 d:DesignHeight="450" d:DesignWidth="800">
-	
-	<UserControl.Resources>
-		<SolidColorBrush x:Key="WindowTextBrush" Color="White" />
-		<SolidColorBrush x:Key="MouseOverOverlayBackgroundBrush" Color="#404040" />
-		<SolidColorBrush x:Key="MouseOverOverlayForegroundBrush" Color="White" />
-		<SolidColorBrush x:Key="PressedOverlayBackgroundBrush" Color="#505050" />
-		<SolidColorBrush x:Key="PressedOverlayForegroundBrush" Color="White" />
-		<SolidColorBrush x:Key="MouseOverWindowCloseButtonBackgroundBrush" Color="#F33" />
-		<SolidColorBrush x:Key="MouseOverWindowCloseButtonForegroundBrush" Color="#FFF" />
-		<SolidColorBrush x:Key="PressedWindowCloseButtonBackgroundBrush" Color="#F66" />
-		<SolidColorBrush x:Key="PressedWindowCloseButtonForegroundBrush" Color="#FFF" />
-
-		<Style x:Key="TitleBarButtonStyle"
-			   TargetType="Button">
-			<Setter Property="Foreground" Value="{DynamicResource WindowTextBrush}" />
-			<Setter Property="Padding" Value="0" />
-			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-			<Setter Property="IsTabStop" Value="False" />
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="{x:Type Button}">
-						<Border x:Name="border"
-								Background="Transparent"
-								BorderThickness="0"
-								SnapsToDevicePixels="true">
-							<ContentPresenter x:Name="contentPresenter"
-											  Margin="0"
-											  HorizontalAlignment="Center"
-											  VerticalAlignment="Center"
-											  Focusable="False"
-											  RecognizesAccessKey="True" />
-						</Border>
-						<ControlTemplate.Triggers>
-							<Trigger Property="IsMouseOver" Value="true">
-								<Setter TargetName="border"
-										Property="Background"
-										Value="{DynamicResource MouseOverOverlayBackgroundBrush}" />
-								<Setter Property="Foreground"
-										Value="{DynamicResource MouseOverOverlayForegroundBrush}" />
-							</Trigger>
-							<Trigger Property="IsPressed" Value="true">
-								<Setter TargetName="border"
-										Property="Background"
-										Value="{DynamicResource PressedOverlayBackgroundBrush}" />
-								<Setter Property="Foreground"
-										Value="{DynamicResource PressedOverlayForegroundBrush}" />
-							</Trigger>
-						</ControlTemplate.Triggers>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-	</UserControl.Resources>
 
 	<Grid>
 		<Grid.ColumnDefinitions>
@@ -68,47 +15,10 @@
 			<ColumnDefinition Width="Auto" />
 		</Grid.ColumnDefinitions>
 
-		<Button Grid.Column="1"
-				Click="OnMinimizeButtonClick"
-				RenderOptions.EdgeMode="Aliased"
-				Style="{StaticResource TitleBarButtonStyle}">
-			<Path Width="46"
-				  Height="32"
-				  Data="M 18,15 H 28"
-				  Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
-				  StrokeThickness="1" />
-		</Button>
+		<local:MinimizeButton Grid.Column="1"/>
 
-		<Button Name="maximizeButton"
-				Grid.Column="2"
-				Click="OnMaximizeRestoreButtonClick"
-				Style="{StaticResource TitleBarButtonStyle}">
-			<Path Width="46"
-				  Height="32"
-				  Data="M 18.5,10.5 H 27.5 V 19.5 H 18.5 Z"
-				  Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
-				  StrokeThickness="1" />
-		</Button>
+		<local:MinMaxButton Grid.Column="2" />
 
-		<Button Name="restoreButton"
-				Grid.Column="2"
-				Click="OnMaximizeRestoreButtonClick"
-				Style="{StaticResource TitleBarButtonStyle}">
-			<Path Width="46"
-				  Height="32"
-				  Data="M 18.5,12.5 H 25.5 V 19.5 H 18.5 Z M 20.5,12.5 V 10.5 H 27.5 V 17.5 H 25.5"
-				  Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
-				  StrokeThickness="1" />
-		</Button>
-
-		<Button Grid.Column="3"
-				Click="OnCloseButtonClick"
-				Style="{StaticResource TitleBarButtonStyle}">
-			<Path Width="46"
-				  Height="32"
-				  Data="M 18,11 27,20 M 18,20 27,11"
-				  Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
-				  StrokeThickness="1" />
-		</Button>
+		<local:CloseButton Grid.Column="3" />
 	</Grid>
 </UserControl>

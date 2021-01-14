@@ -1,6 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using Taskr.Core.Logging;
+using UCL.Logger;
 
 namespace Taskr.WPF.LoggerWindow
 {
@@ -23,28 +26,34 @@ namespace Taskr.WPF.LoggerWindow
 			Hide();
 		}
 
+		private void AddLog(string message, string logLevel)
+		{
+			LogItem logItem = new LogItem(message, logLevel);
+			LogList.Items.Add(logItem);
+		}
+
 		public void LogInfo(string message)
 		{
 			if ((int)_logLevel >= (int)LogLevel.Info)
-				return;
+				AddLog(message, LogLevel.Info.ToString());
 		}
 
 		public void LogWarning(string message)
 		{
 			if ((int)_logLevel >= (int)LogLevel.Warning)
-				return;
+				AddLog(message, LogLevel.Warning.ToString());
 		}
 
 		public void LogError(string message)
 		{
 			if ((int)_logLevel >= (int)LogLevel.Error)
-				return;
+				AddLog(message, LogLevel.Error.ToString());
 		}
 
 		public void Log(string message)
 		{
 			if ((int)_logLevel >= (int)LogLevel.Debug)
-				return;
+				AddLog(message, LogLevel.Debug.ToString());
 		}
 	}
 }

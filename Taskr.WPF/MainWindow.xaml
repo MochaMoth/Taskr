@@ -27,6 +27,10 @@
 			<Setter Property="Foreground" Value="White"/>
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
 		</Style>
+		<Style x:Key="DarkThemeTextBlock" TargetType="{x:Type TextBlock}">
+			<Setter Property="Background" Value="#333"/>
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
 	</Window.Resources>
 
 	<Grid>
@@ -38,27 +42,26 @@
 		<Grid x:Name="AppTitleBar" Grid.Row="0" Height="{Binding ElementName=Window, Path=(ui:TitleBar.Height)}" Style="{StaticResource DarkTheme}">
 
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="{Binding ElementName=Window, Path=(ui:TitleBar.SystemOverlayLeftInset), Converter={StaticResource PixelsToGridLength}}" />
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="{Binding ElementName=Window, Path=(ui:TitleBar.SystemOverlayLeftInset), Converter={StaticResource PixelsToGridLength}}" />
 			</Grid.ColumnDefinitions>
 
-			<Menu Grid.Column="1" Style="{StaticResource DarkThemeForeground}">
-				<MenuItem Header="File"></MenuItem>
-				<MenuItem Header="Debug">
+			<Menu Grid.Column="0" Height="32" VerticalContentAlignment="Center">
+				<MenuItem Header="File" Style="{StaticResource DarkThemeForeground}" Height="32"></MenuItem>
+				<MenuItem Header="Debug" Style="{StaticResource DarkThemeForeground}" Height="32">
 					<MenuItem Header="Show Log Window" Click="ShowLogWindow_Click"></MenuItem>
 				</MenuItem>
 			</Menu>
 
-			<TextBlock Grid.Column="2"
+			<TextBlock Grid.Column="1"
 						FontSize="13"
 						HorizontalAlignment="Center"
 						VerticalAlignment="Center"
+					    Style="{StaticResource DarkThemeTextBlock}"
 						Text="{Binding ElementName=Window, Path=Title}" />
 				
-			<titleBar:WindowControls Grid.Column="3" />
+			<titleBar:WindowControls Grid.Column="2" />
 		</Grid>
 
 		<TabControl x:Name="tabControl" Grid.Row="1">

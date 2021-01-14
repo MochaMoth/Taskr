@@ -1,41 +1,12 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace UCL.TitleBar
 {
 	public partial class WindowControls : UserControl
 	{
-        private Window _window;
-
         public WindowControls()
         {
             InitializeComponent();
-            if (DesignerProperties.GetIsInDesignMode(this))
-                return;
-            _window = Application.Current.MainWindow;
-            _window.StateChanged += WindowStateChanged;
-            WindowStateChanged(this, null);
         }
-
-        private void RefreshMaximizeRestoreButton()
-        {
-            if (_window.WindowState == WindowState.Maximized)
-            {
-                maximizeButton.Visibility = Visibility.Collapsed;
-                restoreButton.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                maximizeButton.Visibility = Visibility.Visible;
-                restoreButton.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        public void OnMinimizeButtonClick(object sender, RoutedEventArgs e) => _window.WindowState = WindowState.Minimized;
-        public void OnMaximizeRestoreButtonClick(object sender, RoutedEventArgs e) => _window.WindowState = _window.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
-        public void OnCloseButtonClick(object sender, RoutedEventArgs e) => _window.Close();
-        public void WindowStateChanged(object sender, EventArgs e) => RefreshMaximizeRestoreButton();
     }
 }
