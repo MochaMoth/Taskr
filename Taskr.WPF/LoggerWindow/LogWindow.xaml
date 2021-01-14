@@ -8,10 +8,17 @@
 		xmlns:ui="http://schemas.modernwpf.com/2019"
 		ui:WindowHelper.UseModernWindowStyle="True"
 		ui:TitleBar.ExtendViewIntoTitleBar="True"
-		WindowStyle="None"
+		ui:TitleBar.Style="{DynamicResource AppTitleBarStyle}"
+		WindowStyle="ToolWindow"
 		mc:Ignorable="d"
-		Title="Log Window" Height="450" Width="800">
-
+		Title="Log Window"
+		Height="450" Width="800">
+	
+	<WindowChrome.WindowChrome>
+		<WindowChrome CaptionHeight="32"
+					  ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
+	</WindowChrome.WindowChrome>
+	
 	<Window.Resources>
 		<sc:PixelsToGridLengthConverter x:Key="PixelsToGridLength" />
 
@@ -36,14 +43,23 @@
 				<ColumnDefinition Width="{Binding ElementName=Window, Path=(ui:TitleBar.SystemOverlayLeftInset), Converter={StaticResource PixelsToGridLength}}" />
 			</Grid.ColumnDefinitions>
 
-			<Menu Grid.Column="0">
-				<MenuItem>Hi</MenuItem>
-			</Menu>
-
-			<TextBlock Grid.Column="2" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=Window, Path=Title}" />
+			<TextBlock Grid.Column="2" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Log Window" />
 		</Grid>
-		<ui:ScrollViewerEx x:Name="LogList">
-			
+		
+		<ui:ScrollViewerEx Grid.Row="1">
+			<ui:ListView x:Name="LogList" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Top">
+				<Button>Hello</Button>
+				<Button>Hello</Button>
+				<Button>Hello</Button>
+				<Button>Hello</Button>
+				<Button>Hello</Button>
+				<Button>Hello</Button>
+				<Button>Hello</Button>
+				<Button>Hello</Button>
+				<Button>Hello</Button>
+				<Button>Hello</Button>
+				<Button>Hello</Button>
+			</ui:ListView>
 		</ui:ScrollViewerEx>
 	</Grid>
 </Window>

@@ -6,8 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taskr.Core", "Taskr.Core.csproj", "{F41853FB-D040-410D-85EA-1B1BE08B773B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taskr.WPF", "..\Taskr.WPF\Taskr.WPF.csproj", "{DCC33FDB-C982-4D62-ABAD-7830F17B6740}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F9449C2C-30DC-4272-B464-2C8889234A4C} = {F9449C2C-30DC-4272-B464-2C8889234A4C}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taskr.Tests", "..\Taskr.Tests\Taskr.Tests.csproj", "{52AB3D85-3512-4C14-AF82-1111D3A9B83C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCL", "..\CCL\CCL.csproj", "{446B3673-373D-4BAF-A925-819C67A30D28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCL", "..\UCL\UCL.csproj", "{F9449C2C-30DC-4272-B464-2C8889234A4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,14 @@ Global
 		{52AB3D85-3512-4C14-AF82-1111D3A9B83C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52AB3D85-3512-4C14-AF82-1111D3A9B83C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52AB3D85-3512-4C14-AF82-1111D3A9B83C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{446B3673-373D-4BAF-A925-819C67A30D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{446B3673-373D-4BAF-A925-819C67A30D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{446B3673-373D-4BAF-A925-819C67A30D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{446B3673-373D-4BAF-A925-819C67A30D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9449C2C-30DC-4272-B464-2C8889234A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9449C2C-30DC-4272-B464-2C8889234A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9449C2C-30DC-4272-B464-2C8889234A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9449C2C-30DC-4272-B464-2C8889234A4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
