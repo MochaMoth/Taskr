@@ -32,7 +32,16 @@ namespace Taskr.WPF
 
 		public void UnloadWindow(object sender, RoutedEventArgs e)
 		{
+			if (_logWindow.Visibility == Visibility.Visible)
+				_logWindow.Hide();
 			_logWindow.Close();
+		}
+
+		private void ShowLogWindow_Click(object sender, RoutedEventArgs e)
+		{
+			if (_logWindow == null)
+				_logWindow = new LogWindow(LogLevel.Debug);
+			_logWindow.Show();
 		}
 	}
 }

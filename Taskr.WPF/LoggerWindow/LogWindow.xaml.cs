@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using Taskr.Core.Logging;
 
 namespace Taskr.WPF.LoggerWindow
@@ -11,6 +12,15 @@ namespace Taskr.WPF.LoggerWindow
 		{
 			InitializeComponent();
 			_logLevel = logLevel;
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			if (Visibility == Visibility.Hidden)
+				return;
+
+			e.Cancel = true;
+			Hide();
 		}
 
 		public void LogInfo(string message)

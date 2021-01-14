@@ -19,9 +19,13 @@
 
 	<Window.Resources>
 		<sc:PixelsToGridLengthConverter x:Key="PixelsToGridLength" />
-		<Style TargetType="{x:Type Window}">
+		<Style x:Key="DarkTheme" TargetType="{x:Type Grid}">
+			<Setter Property="Background" Value="#333"/>
+		</Style>
+		<Style x:Key="DarkThemeForeground" TargetType="{x:Type Control}">
 			<Setter Property="Background" Value="#333"/>
 			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
 		</Style>
 	</Window.Resources>
 
@@ -31,32 +35,30 @@
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
-		<Grid Grid.Row="0">
-			<Grid x:Name="AppTitleBar" Height="{Binding ElementName=Window, Path=(ui:TitleBar.Height)}">
+		<Grid x:Name="AppTitleBar" Grid.Row="0" Height="{Binding ElementName=Window, Path=(ui:TitleBar.Height)}" Style="{StaticResource DarkTheme}">
 
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="{Binding ElementName=Window, Path=(ui:TitleBar.SystemOverlayLeftInset), Converter={StaticResource PixelsToGridLength}}" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="Auto"/>
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="{Binding ElementName=Window, Path=(ui:TitleBar.SystemOverlayLeftInset), Converter={StaticResource PixelsToGridLength}}" />
-				</Grid.ColumnDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="{Binding ElementName=Window, Path=(ui:TitleBar.SystemOverlayLeftInset), Converter={StaticResource PixelsToGridLength}}" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="{Binding ElementName=Window, Path=(ui:TitleBar.SystemOverlayLeftInset), Converter={StaticResource PixelsToGridLength}}" />
+			</Grid.ColumnDefinitions>
 
-				<Menu Grid.Column="1">
-					<MenuItem Header="_File"></MenuItem>
-					<MenuItem Header="_Debug">
-						<MenuItem Header="_Show Log Window"></MenuItem>
-					</MenuItem>
-				</Menu>
+			<Menu Grid.Column="1" Style="{StaticResource DarkThemeForeground}">
+				<MenuItem Header="File"></MenuItem>
+				<MenuItem Header="Debug">
+					<MenuItem Header="Show Log Window" Click="ShowLogWindow_Click"></MenuItem>
+				</MenuItem>
+			</Menu>
 
-				<TextBlock Grid.Column="2"
-						   FontSize="13"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   Text="{Binding ElementName=Window, Path=Title}" />
+			<TextBlock Grid.Column="2"
+						FontSize="13"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Text="{Binding ElementName=Window, Path=Title}" />
 				
-				<titleBar:WindowControls Grid.Column="3" />
-			</Grid>
+			<titleBar:WindowControls Grid.Column="3" />
 		</Grid>
 
 		<TabControl x:Name="tabControl" Grid.Row="1">
