@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -20,14 +22,34 @@ namespace UCL.Logger
 			{ "Debug", Color.FromRgb(255, 255, 255) }
 		};
 
-		public LogItem(string message, string logLevel)
+		public string LogLevel { get; set; } = "Debug";
+		public string Message { get; set; } = "Test";
+
+		public LogItem()
 		{
 			InitializeComponent();
-			LogTitle.Text = logLevel;
-			LogBody.Text = message;
+			Initialized += Initialize;
+		}
 
-			Resources["Background"] = new SolidColorBrush(_backgrounds[logLevel]);
-			Resources["Foreground"] = new SolidColorBrush(_foregrounds[logLevel]);
+		public LogItem(string message, string logLevel)
+		{
+			LogLevel = logLevel;
+			Message = message;
+
+			InitializeComponent();
+			Initialized += Initialize;
+		}
+
+		private void Initialize(object sender, EventArgs e)
+		{
+			LogTitle.Text = $"{LogLevel}";
+			LogBody.Text = Message;
+
+			if (DesignerProperties.GetIsInDesignMode(this))
+				return;
+
+			Resources["Background"] = new SolidColorBrush(_backgrounds[LogLevel]);
+			Resources["Foreground"] = new SolidColorBrush(_foregrounds[LogLevel]);
 		}
 	}
 }

@@ -11,6 +11,12 @@
 	<UserControl.Resources>
 		<SolidColorBrush x:Key="Background" Color="#333" />
 		<SolidColorBrush x:Key="Foreground" Color="White" />
+
+		<Style TargetType="{x:Type TextBlock}">
+			<Setter Property="Background" Value="{DynamicResource Background}"/>
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch" />
+		</Style>
 	</UserControl.Resources>
 	
 	<Grid>
@@ -22,7 +28,7 @@
 			<RowDefinition Height="Auto" MinHeight="16" />
 		</Grid.RowDefinitions>
 
-		<TextBlock x:Name="LogTitle" Grid.Row="0" HorizontalAlignment="Stretch" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}">Debug</TextBlock>
-		<TextBlock x:Name="LogBody" Grid.Row="1" HorizontalAlignment="Stretch" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}">Test test test</TextBlock>
+		<TextBlock x:Name="LogTitle" Grid.Row="0" HorizontalAlignment="Stretch" />
+		<TextBlock x:Name="LogBody" Grid.Row="1" HorizontalAlignment="Stretch" />
 	</Grid>
 </UserControl>

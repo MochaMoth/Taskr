@@ -7,6 +7,7 @@
 		xmlns:sc="clr-namespace:Taskr.WPF.Converters"
 		xmlns:ui="http://schemas.modernwpf.com/2019"
 		xmlns:titleBar="clr-namespace:UCL.TitleBar;assembly=UCL"
+		xmlns:logger="clr-namespace:UCL.Logger;assembly=UCL"
 		WindowStyle="None"
 		mc:Ignorable="d"
 		Title="Log Window"
@@ -64,6 +65,7 @@
 		
 		<ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch">
 			<ListView x:Name="LogList" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Top">
+				<logger:LogItem Message="Test Test" LogLevel="Debug" />
 			</ListView>
 		</ScrollViewer>
 	</Grid>
